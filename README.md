@@ -12,12 +12,11 @@
 
 提供简洁精美的 Web UI，支持 OpenAI / OpenAI 兼容接口、fal.ai 与可导入的自定义 HTTP 服务商。<br>
 支持文本生图、参考图与遮罩编辑，数据纯本地化存储，带来流畅的历史记录与参数管理体验。
+相较于原版，在选择OpenAi兼容接口处 API URL 锁定，允许用户编辑，默认不锁定 API 代理
 
 <br>
 
-[![Vercel 在线体验](https://img.shields.io/badge/Vercel-%E5%9C%A8%E7%BA%BF%E4%BD%93%E9%AA%8C-black?style=for-the-badge&logo=vercel&logoColor=white)](https://gpt-image-playground.cooksleep.dev)
-&nbsp;&nbsp;&nbsp;
-[![GitHub Pages 在线体验](https://img.shields.io/badge/GitHub%20Pages-%E5%9C%A8%E7%BA%BF%E4%BD%93%E9%AA%8C-222222?style=for-the-badge&logo=github&logoColor=white)](https://cooksleep.github.io/gpt_image_playground)
+
 
 </div>
 
@@ -25,20 +24,7 @@
 
 > 💡 **提示**：若需调用非 HTTPS 的内网或本地 HTTP API，请使用 GitHub Pages 版本或自行部署，Vercel 部署的体验版绑定的 `.dev` 域名因安全策略通常要求接口必须为 HTTPS。
 
----
 
-## ❤️ 赞助商
-
-<table>
-<tr>
-<td width="180" align="center" valign="middle">
-  <a href="https://www.5cookie.cc"><img src="https://github.com/user-attachments/assets/c2a1e98e-c172-49ff-b361-60bb32601daa" alt="5Cookie Code" width="150"></a>
-</td>
-<td valign="middle"><b><a href="https://www.5cookie.cc">5Cookie Code</a></b>是一家稳定高速的 API 中继服务提供商，为 Image-2、Claude Code、Codex 等平台或模型提供 API 中继服务。面向个人、团队和企业用户提供 AI 编码服务和 AI 生图服务。</td>
-</tr>
-</table>
-
----
 
 ## 📸 界面预览
 
@@ -227,12 +213,10 @@ $env:VITE_DEFAULT_API_URL="https://api.openai.com/v1"; npm run deploy:cf
 **1. Docker CLI 示例**
 
 ```bash
-docker run -d -p 8080:80 \
-  -e DEFAULT_API_URL=https://api.openai.com/v1 \
+docker run -d --name gpt-image-playground -p 5173:80 \
   -e ENABLE_API_PROXY=true \
-  -e LOCK_API_PROXY=true \
-  -e API_PROXY_URL=https://api.openai.com/v1 \
-  ghcr.io/cooksleep/gpt_image_playground:latest
+  -e API_PROXY_URL=https://sycagent.top/v1 \
+  gpt-image-playground:v1-fixed-20260608-1605
 ```
 
 **隐藏真实 API 地址示例（OpenAI 兼容接口）：**
