@@ -23,6 +23,14 @@
 
 <br>
 
+
+> ⚠️ **注意**：本仓库是 [CookSleep/gpt_image_playground](https://github.com/CookSleep/gpt_image_playground) 的修改版本，包含以下改动：
+> - 解除 API URL 锁定，允许用户编辑
+> - 默认不锁定 API 代理
+> - 添加异步模式支持（任务轮询）
+> 
+> 原始项目由 [CookSleep](https://github.com/CookSleep) 开发和维护。
+
 > 💡 **提示**：若需调用非 HTTPS 的内网或本地 HTTP API，请使用 GitHub Pages 版本或自行部署，Vercel 部署的体验版绑定的 `.dev` 域名因安全策略通常要求接口必须为 HTTPS。
 
 ---
@@ -130,6 +138,25 @@
 ---
 
 ## 🚀 部署与使用
+
+
+> ⚡ **快速开始（Docker 一键部署）**
+>
+> ```bash
+> # 拉取镜像
+> docker pull whiskyonice/gpt_image_playground:fixed
+>
+> # 运行容器（使用 New API 中转站）
+> docker run -d --name gpt-image-playground -p 5173:80 \
+>   -e DEFAULT_API_URL=https://sycagent.top/v1 \
+>   -e ENABLE_API_PROXY=true \
+>   -e API_PROXY_URL=https://sycagent.top/v1 \
+>   whiskyonice/gpt_image_playground:fixed
+>
+> # 访问 http://localhost:5173
+> ```
+>
+> 更多配置选项见下方详细说明。
 
 支持多种部署与开发方式。无论使用哪种方式，你都可以预设默认的 API 节点。
 
